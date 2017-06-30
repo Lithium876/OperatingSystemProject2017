@@ -14,5 +14,4 @@ PROCESS CONTROL BLOCK
 | ITEM     | DESCRIPTION                      | GENERATED                                          |
 |----------|:--------------------------------:|:--------------------------------------------------:|
 |Process Id| Unique identifier for process    | a <i>unique</i> randomized integer between 0 and 20|
-|Process Type| Type of Porcess: 
-                * 1 System                    | a randomized selection from options|
+|Process Type| Type of Porcess:* 1 System     |  a randomized selection from options     |

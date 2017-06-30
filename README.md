@@ -8,3 +8,12 @@ the process in those higher priority queues should have completed its execution.
 ### Assignment Requirements
 
 You have been asked to simulate a Multi-Level Queue algorithm. The simulation should allow the user the option to specify how many processes should be used at execution time. The simulation should automatically generate the processes and randomly assigned them a Process Type, Priority, Arrival and Burst Time. When the simulation completes a report should be generated to display the intervals that each process ran. This should be presented in a tabular format and also saved to a text file for subsequent retrieval and marking
+
+PROCESS CONTROL BL
+
+
+
+
+| ITEM     | DESCRIPTION                      | GENERATED                                          |
+|..........|:................................:|....................................................|
+|Process Id| Unique identifier for process    | a <i>unique</i> randomized integer between 0 and 20|

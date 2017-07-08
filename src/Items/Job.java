@@ -10,7 +10,9 @@ public class Job {
 	private int StartTime;
 	private int EndTime;
 	private int Remaining;
+	private int WaitTime;
 	public boolean Finished;
+	
 
 	private Random rand = new Random();
 	
@@ -35,10 +37,6 @@ public class Job {
 		this.ArrivalTime = process.ArrivalTime;
 		this.BurstTime = process.BurstTime;
 	}
-	
-	 public int getWaitTime(int SimulationTime) {
-		 return (getTurnaround(SimulationTime) - (BurstTime - getRemainTime()));
-	  }
 	
 	public void setProcessId(int processId) {
 		ProcessId = processId;
@@ -129,6 +127,10 @@ public class Job {
         }
         return 0; 
     }
+	
+	 public int getWaitTime(int SimulationTime) {
+	        return (getTurnaround(SimulationTime) - (this.BurstTime));
+	    }
 	
     public boolean isFirst(Job other) {
         if(this.ArrivalTime == other.ArrivalTime){

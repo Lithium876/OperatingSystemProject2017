@@ -43,7 +43,7 @@ public class List {
 		return (mainList.isEmpty());
 	}
 	 
-	public void clearQueue(){
+	public void clearList(){
 		for(int i =0 ; i< mainList.size() ; i++){
 			mainList.remove(i);
 	    }

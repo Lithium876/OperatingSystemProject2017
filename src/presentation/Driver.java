@@ -4,6 +4,7 @@ import java.util.Scanner;
 import Items.Job;
 import Items.List;
 import algorithm.FCFS;
+import algorithm.RR;
 import algorithm.SRTF;
 public class Driver {
 	
@@ -13,6 +14,7 @@ public class Driver {
 		int NoOfProcesses;
 		FCFS fcfs;
 		SRTF srtf;
+		RR rr;
 		Scanner in = new Scanner(System.in);
 	
 		System.out.println("Enter Number Processes to use: ");
@@ -29,7 +31,9 @@ public class Driver {
 		
 		for(int j=0;j<NoOfProcesses;j++){
 			workingList.addJob(listofJobs.getJob(j));
-			srtf = new SRTF(workingList);
+			fcfs = new FCFS(workingList);
+//			workingList.addJob(listofJobs.getJob(j));
+//			srtf = new SRTF(workingList);
 			
 //			if(listofJobs.getJob(j).getProcessType().equals("System")){
 //				

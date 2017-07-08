@@ -21,9 +21,9 @@ public class FCFS {
 					list.getJob(i).setEndTime(list.getCurrentTime() + list.getJob(i).getBurstTime());
 					list.setCurrentTime(list.getJob(i).getEndTime());
 					list.getJob(i).Finished = true;
-					if(list.getJob(i).getArrivalTime() > list.getJob(i).getStartTime()){
+					if(list.getJob(i).getArrivalTime() >= list.getJob(i).getStartTime()){
 						System.out.print("Job "+list.getJob(i).getProcessId()+" ");
-						System.out.print("Arrived at time" +list.getJob(i).getArrivalTime()+" ");
+						System.out.print("Arrived at time " +list.getJob(i).getArrivalTime()+" ");
 						System.out.print("and ran for "+list.getJob(i).getBurstTime()+" units of time\n");
 					}else{
 						System.out.print("Job "+list.getJob(i).getProcessId()+" ");

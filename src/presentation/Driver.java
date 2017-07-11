@@ -14,7 +14,7 @@ public class Driver {
 		int NoOfProcesses;
 		FCFS fcfs;
 		SRTF srtf;
-		RR rr;
+		RR rr = new RR();
 		Scanner in = new Scanner(System.in);
 	
 		System.out.println("Enter Number Processes to use: ");
@@ -28,10 +28,11 @@ public class Driver {
         }
 		
 		listofJobs.OrderedByArrive();
+	
 		
 		for(int j=0;j<NoOfProcesses;j++){
 			workingList.addJob(listofJobs.getJob(j));
-			fcfs = new FCFS(workingList);
+			rr.run(workingList);
 //			workingList.addJob(listofJobs.getJob(j));
 //			srtf = new SRTF(workingList);
 			
@@ -43,8 +44,8 @@ public class Driver {
 //				workingList.addJob(listofJobs.getJob(j));
 //				fcfs = new FCFS(workingList);
 //			}
+			
 		}
-		
 		in.close();
 	}
 }

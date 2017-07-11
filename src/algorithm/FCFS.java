@@ -38,7 +38,6 @@ public class FCFS {
 					System.out.println("Turn Around Time: "+list.getJob(i).getTurnaround(list.getCurrentTime()));
 					System.out.println("Waiting Time: "+list.getJob(i).getWaitTime(list.getCurrentTime()));
 				}
-				
 			}
 		}
 		System.out.println("Current Time: "+list.getCurrentTime()+"\n");

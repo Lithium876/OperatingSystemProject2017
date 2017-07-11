@@ -68,7 +68,7 @@ public class RR {
 					System.out.print("Job "+list.getJob(i).getProcessId()+" ");
 					System.out.print("Arrived at time "+list.getJob(i).getArrivalTime()+" ");
 					System.out.print("with a burst time of "+list.getJob(i).getBurstTime()+" ");
-					System.out.print("but started at "+list.getJob(i).getStartTime()+" ");
+					System.out.print("but started at time "+list.getJob(i).getStartTime()+" ");
 					System.out.print("and ran for "+RunTime+" units of time \n");
 				}
 				

@@ -28,8 +28,8 @@ public class Driver {
         }
 		
 		listofJobs.OrderedByArrive();
+//		listofJobs.showList();
 	
-		
 		for(int j=0;j<NoOfProcesses;j++){
 			workingList.addJob(listofJobs.getJob(j));
 			rr.run(workingList);
@@ -44,7 +44,6 @@ public class Driver {
 //				workingList.addJob(listofJobs.getJob(j));
 //				fcfs = new FCFS(workingList);
 //			}
-			
 		}
 		in.close();
 	}

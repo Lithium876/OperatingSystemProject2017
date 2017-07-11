@@ -1,64 +1,74 @@
 package Items;
 
 public class MyArrayList {
-	private static final int SIZE_FACTOR=1;
+	//SIZE_FACTOR is the value to increase the array by if need be
+	private static final int SIZE_FACTOR=1; 
     private Job data[];
-    private int index;
+    private int length; //Size-1 of the array. How much data in list
     private int size;
      
+    /**
+     * create an array of Jobs objects
+     * @param initSize is the initial size of the array when created
+     */
     public MyArrayList(int initSize){
         this.data=new Job[initSize];
         this.size=initSize;
     }
     
+    /**
+     * @return the length of the array i.e array size - 1
+     */
     public int lenght(){
-    	return this.index;
+    	return this.length;
     }
     
+    /**
+     * @return the size of the array
+     */
     public int size(){
     	return this.size;
     }
     
+    /**
+     * @return true if the array is empty
+     */
     public boolean isEmpty(){
 		if(this.size == 0){
 			return true;
 		}
 		return false;
 	}
-    
-    public void add(int i, Job process){
-    	if(this.index==this.size-1){
-             //increase the size of data[]
-             increaseSizeAndReallocate();
-        }
-    	if(i<1 || i>this.size+1){
-				System.out.println("Sorry, the position is Invalid\n");
-    	}else{
-    		for(int j=this.size; j>i-1;j--){
-    			this.data[j] = this.data[j-1];
-    		}
-			this.data[i-1]=process; 	
-			this.index++;
-		}
-    }
-     
+   
+    /**
+     * Add a process to the job object array
+     * @param process is the element/process to add to the array
+     */
     public void add(Job process){
-        if(this.index==this.size-1){
+    	//if the array is out of space
+        if(this.length==this.size-1){
             //increase the size of data[]
             increaseSizeAndReallocate();
         }
-        data[this.index]=process;
-        this.index++; 
+        data[this.length]=process;
+        this.length++; 
     }
     
+    /**
+     * Replaces the element at the specified position 
+       in this list with the specified element.
+     * @param i is the position to place the element
+     * @param process is the element to placed in the array
+     */
     public void set(int index, Job process){
     	if(index<1 || index>this.size+1){
-			System.out.println("Sorry, the position is Invalid\n");
+			System.out.println("!Sorry, the position is Invalid\n");
 		}else{
 			data[index] = process;
 		}
     }
-     
+    
+    /**Increases the array by the SIZE_FACTOR*/
     private void increaseSizeAndReallocate() {
         this.size=this.size+SIZE_FACTOR;
         Job newData[]=new Job[this.size];
@@ -67,9 +77,15 @@ public class MyArrayList {
         }
         this.data=newData;
     }
-     
+    
+    /**
+     * Get a Job 
+     * @param i is the position
+     * @return process the element at the specified position in this list.
+     */
     public Job get(int i){
-        if(i>this.index-1){
+    	//remember to throw exceptions here!
+        if(i>this.length-1){
            System.out.println("ArrayIndexOutOfBound");
         }
         if(i<0){
@@ -77,9 +93,15 @@ public class MyArrayList {
         }
         return this.data[i];  
     }
-     
+    
+    /**
+     * method removes the element at the specified position in this list.
+     * Shifts any subsequent elements to the left  
+     * @param i is the position
+     */
     public void remove(int i){
-        if(i>this.index-1){
+    	//remember to throw exceptions here!
+        if(i>this.length-1){
        	 System.out.println("ArrayIndexOutOfBound");
         }
         if(i<0){
@@ -88,6 +110,6 @@ public class MyArrayList {
         for(int x=i; x<this.data.length-1;x++){
             data[x]=data[x+1];
         }
-        this.index--;
+        this.length--;
     }
 }

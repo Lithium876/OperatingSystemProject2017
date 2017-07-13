@@ -8,7 +8,7 @@ import presentation.ReportWriter;
 public class FCFS extends ReportWriter{
 	
 	public FCFS(){
-		super("C:\\Users\\Admin\\Desktop\\Report.txt");
+		super("Report.txt");
 	}
 	
 	public int run(List list){

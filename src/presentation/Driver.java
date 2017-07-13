@@ -12,7 +12,7 @@ public class Driver {
 	public static void main(String[] args){
 		int time =0;
 		int NoOfProcesses;
-		FCFS fcfs;
+		FCFS fcfs  = new FCFS();
 		SRTF srtf;
 		RR rr = new RR();
 		Scanner in = new Scanner(System.in);
@@ -21,7 +21,10 @@ public class Driver {
 		NoOfProcesses = in.nextInt();
 		
 		List listofJobs = new List(NoOfProcesses);
-		List workingList = new List(NoOfProcesses);
+		List workingBatchList = new List(NoOfProcesses);
+		List workingInteractiveList = new List(NoOfProcesses);
+		
+		
 
 		for(int i=0 ; i<NoOfProcesses ; i++){
 			listofJobs.addJob(new Job(i+1));
@@ -29,21 +32,22 @@ public class Driver {
 		
 		listofJobs.OrderedByArrive();
 //		listofJobs.showList();
-	
+		System.out.println("PID\tArrival Time\tBurst Time\tStart Time\tEnd Time\tTurnaround Time \tWait time\tRemaining Time\tProcess Type");
 		for(int j=0;j<NoOfProcesses;j++){
-			workingList.addJob(listofJobs.getJob(j));
-			rr.run(workingList);
+			
+//			rr.run(workingList);
+//			fcfs.run(workingList);
+
 //			workingList.addJob(listofJobs.getJob(j));
 //			srtf = new SRTF(workingList);
-			
-//			if(listofJobs.getJob(j).getProcessType().equals("System")){
-//				
-//			}else if(listofJobs.getJob(j).getProcessType().equals("Interactive")){
-//				
-//			}else{
-//				workingList.addJob(listofJobs.getJob(j));
-//				fcfs = new FCFS(workingList);
-//			}
+//			
+			if(listofJobs.getJob(j).getProcessType().equals("Interactive")){
+				workingInteractiveList.addJob(listofJobs.getJob(j));
+				rr.run(workingInteractiveList);
+			}else{
+//				workingBatchList.addJob(listofJobs.getJob(j));
+//				fcfs.run(workingBatchList);
+			}
 		}
 		in.close();
 	}

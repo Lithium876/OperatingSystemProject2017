@@ -16,73 +16,45 @@ public class RR {
 	
 	public void run(List list){
 		this.setListSize(list.size());
-		if(list.size()==1){
-			list.getJob(0).setStartTime(0);
-			if(Quantum >= list.getJob(0).getBurstTime()){
-				list.getJob(0).setEndTime(list.getJob(0).getBurstTime());
-				list.getJob(0).setRemainingTime(0);
-				RunTime = list.getJob(0).getBurstTime();
-			}else{
-				list.getJob(0).setEndTime(list.getJob(0).getStartTime()+Quantum);
-				list.getJob(0).setRemainingTime(list.getJob(0).getRemainTime()-Quantum);
-				RunTime = Quantum;
-			}
-			
-			list.setCurrentTime(list.getJob(0).getEndTime());
-			System.out.print("Job "+list.getJob(0).getProcessId()+" ");
-			System.out.print("Arrived at time "+list.getJob(0).getArrivalTime()+" ");
-			System.out.print("with a burst time of "+list.getJob(0).getBurstTime()+" ");
-			System.out.print("and ran for "+RunTime+" units of time \n");
-			if(list.getJob(0).getRemainTime() > 0){
-				System.out.print(">> Remaining Time is "+list.getJob(0).getRemainTime()+"\n\n");
-			}else{
-				list.getJob(0).Finished=true;
-				this.setJobCount();
-			}
-			n++;
-			list.getJob(0).setBurstTime(list.getJob(0).getRemainTime());
-		}else{
-			for(int i=n;i<list.size();i++){
-				if(list.getJob(i).Finished == false){
-					if(list.getJob(i).getArrivalTime() > list.getCurrentTime()){
-						list.setCurrentTime(list.getJob(i).getArrivalTime());
-					}
-					list.getJob(i).setStartTime(list.getCurrentTime());
-					if(Quantum >= list.getJob(i).getBurstTime()){
-						list.getJob(i).setEndTime(list.getJob(i).getBurstTime());
-						list.getJob(i).setRemainingTime(0);
-						RunTime = list.getJob(i).getBurstTime();
-					}else{
-						list.getJob(i).setEndTime(list.getJob(i).getStartTime()+Quantum);
-						list.getJob(i).setRemainingTime(list.getJob(i).getRemainTime()-Quantum);
-						RunTime = Quantum;
-					}
+		for(int i=n;i<list.size();i++){
+			if(list.getJob(i).Finished == false){
+				if(list.getJob(i).getArrivalTime() > list.getCurrentTime()){
+					list.setCurrentTime(list.getJob(i).getArrivalTime());
+				}
+				list.getJob(i).setStartTime(list.getCurrentTime());
+				if(Quantum > list.getJob(i).getBurstTime()){
+					list.getJob(i).setEndTime(list.getJob(i).getStartTime()+list.getJob(i).getBurstTime());
+					list.getJob(i).setRemainingTime(0);
+					RunTime = list.getJob(i).getBurstTime();
+				}else{
+					list.getJob(i).setEndTime(list.getJob(i).getStartTime()+Quantum);
+					list.getJob(i).setRemainingTime(list.getJob(i).getRemainTime()-Quantum);
+					RunTime = Quantum;
 				}
 				list.setCurrentTime(list.getCurrentTime()+RunTime);
-				if(list.getJob(i).getArrivalTime() >= list.getJob(i).getStartTime()){
-					System.out.print("Job "+list.getJob(i).getProcessId()+" ");
-					System.out.print("Arrived at time "+list.getJob(i).getArrivalTime()+" ");
-					System.out.print("with a burst time of "+list.getJob(i).getBurstTime()+" ");
-					System.out.print("and ran for "+RunTime+" units of time \n");
+				System.out.print(list.getJob(i).getProcessId());
+				if(list.getJob(i).getProcessId() >= 10){
+					System.out.printf("%13s",list.getJob(i).getArrivalTime());
 				}else{
-					System.out.print("Job "+list.getJob(i).getProcessId()+" ");
-					System.out.print("Arrived at time "+list.getJob(i).getArrivalTime()+" ");
-					System.out.print("with a burst time of "+list.getJob(i).getBurstTime()+" ");
-					System.out.print("but started at time "+list.getJob(i).getStartTime()+" ");
-					System.out.print("and ran for "+RunTime+" units of time \n");
+					System.out.printf("%14s",list.getJob(i).getArrivalTime());
 				}
-				
-				if(list.getJob(i).getRemainTime() > 0){
-					System.out.print(">> Remaining Time is "+list.getJob(i).getRemainTime()+"\n\n");
+				System.out.printf("%15s",list.getJob(i).getBurstTime());
+				System.out.printf("%17s",list.getJob(i).getStartTime());
+				System.out.printf("%14s",list.getJob(i).getEndTime());
+				System.out.printf("%19s",list.getJob(i).getTurnaround(list.getCurrentTime()));
+				System.out.printf("%22s",list.getJob(i).getWaitTimeRoundRobin(list.getCurrentTime()));
+				if(list.getJob(i).getRemainTime() > 0 ){
+					System.out.printf("%19s",list.getJob(i).getRemainTime());
 				}else{
+					System.out.printf("%19s",0);
 					list.getJob(i).Finished=true;
 					this.setJobCount();
 				}
-				n++;
+				System.out.printf("%19s",list.getJob(i).getProcessType() +"\n");
 				list.getJob(i).setBurstTime(list.getJob(i).getRemainTime());
+				n++;
 			}
 		}
-		System.out.println("Current Time: "+list.getCurrentTime()+"\n");
 	}
 	
 	public void setJobCount(){

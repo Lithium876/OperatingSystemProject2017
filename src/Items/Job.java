@@ -199,6 +199,10 @@ public class Job {
 	 public int getWaitTime(int SimulationTime) {
 	        return (getTurnaround(SimulationTime) - (this.BurstTime));
 	    }
+	 
+	 public int getWaitTimeRoundRobin(int SimulationTime) {
+	        return (getTurnaround(SimulationTime) - (this.BurstTime - this.Remaining));
+	    }
 	
 	 /**
 	 * compare the arrive time to see which job arrived first 

@@ -8,10 +8,10 @@ import presentation.ReportWriter;
 public class FCFS extends ReportWriter{
 	
 	public FCFS(){
-		super("Report.txt");
+		super("C:\\Users\\Admin\\Desktop\\Report.txt");
 	}
 	
-	public void run(List list){
+	public int run(List list){
 		for(int i=0;i<list.size();i++){
 			if(list.getJob(i).Finished == false){
 				if(list.getJob(i).getArrivalTime() > list.getCurrentTime()){
@@ -32,7 +32,7 @@ public class FCFS extends ReportWriter{
 				System.out.printf("%17s",list.getJob(i).getStartTime());
 				System.out.printf("%14s",list.getJob(i).getEndTime());
 				System.out.printf("%19s",list.getJob(i).getTurnaround(list.getCurrentTime()));
-				System.out.printf("%22s",list.getJob(i).getWaitTime(list.getCurrentTime()));
+				System.out.printf("%22s",list.getJob(i).getWaitTimeFCFS(list.getCurrentTime()));
 				System.out.printf("%19s",0);
 				System.out.printf("%19s",list.getJob(i).getProcessType() +"\n");
 				
@@ -48,7 +48,7 @@ public class FCFS extends ReportWriter{
 					super.WriteReport(String.format("%17s",list.getJob(i).getStartTime()));
 					super.WriteReport(String.format("%14s",list.getJob(i).getEndTime()));
 					super.WriteReport(String.format("%19s",list.getJob(i).getTurnaround(list.getCurrentTime())));
-					super.WriteReport(String.format("%22s",list.getJob(i).getWaitTime(list.getCurrentTime())));
+					super.WriteReport(String.format("%22s",list.getJob(i).getWaitTimeFCFS(list.getCurrentTime())));
 					super.WriteReport(String.format("%19s",0));
 					super.WriteReport(String.format("%19s",list.getJob(i).getProcessType() +"\r\n"));
 				} catch (IOException e) {
@@ -56,5 +56,6 @@ public class FCFS extends ReportWriter{
 				}
 			}
 		}
+		return list.getCurrentTime();
 	}
 }

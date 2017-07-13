@@ -14,7 +14,7 @@ public class Driver {
 	public static void main(String[] args){
 		int time =0;
 		int NoOfProcesses;
-		ReportWriter report = new ReportWriter("Report.txt");
+		ReportWriter report = new ReportWriter("C:\\Users\\Admin\\Desktop\\Report.txt");
 		FCFS fcfs  = new FCFS();
 		SRTF srtf;
 		RR rr = new RR();
@@ -31,12 +31,13 @@ public class Driver {
 			listofJobs.addJob(new Job(i+1));
         }
 		
+		listofJobs.showList();
 		listofJobs.OrderedByArrive();
-//		listofJobs.showList();
-		System.out.println("PID\tArrival Time\tBurst Time\tStart Time\tEnd Time\tTurnaround Time \tWait time\tRemaining Time\tProcess Type");
+		
+		System.out.println("\nPID\tArrival Time\tBurst Time\tStart Time\tEnd Time\tTurnaround Time \tWait time\tRemaining Time\tProcess Type");
 		
 		try {
-			File file = new File("Report.txt");
+			File file = new File("C:\\Users\\Admin\\Desktop\\Report.txt");
 			if(file.length() == 0){
 				report.WriteReport(String.format("PID\tArrival Time\tBurst Time\tStart Time\tEnd Time\tTurnaround Time \tWait time\tRemaining Time\tProcess Type\r\n"));
 			}else{
@@ -47,15 +48,15 @@ public class Driver {
 		}
 		
 		for(int j=0;j<NoOfProcesses;j++){
-//			workingList.addJob(listofJobs.getJob(j));
-//			srtf = new SRTF(workingList);
-//			
+			workingBatchList.setCurrentTime(time);
+			workingInteractiveList.setCurrentTime(time);
+			
 			if(listofJobs.getJob(j).getProcessType().equals("Interactive")){
 				workingInteractiveList.addJob(listofJobs.getJob(j));
-				rr.run(workingInteractiveList);
-			}else{
+				time = rr.run(workingInteractiveList);
+			}else if(listofJobs.getJob(j).getProcessType().equals("Batch")){
 				workingBatchList.addJob(listofJobs.getJob(j));
-				fcfs.run(workingBatchList);
+				time = fcfs.run(workingBatchList);
 			}
 		}
 		rr.Check(workingInteractiveList);

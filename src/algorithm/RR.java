@@ -8,19 +8,16 @@ import presentation.ReportWriter;
 public class RR extends ReportWriter{
 	private int Quantum = 2;
 	private int RunTime;
-	private int ListSize;
 	private int JobCount;
 	private static int n=0;
 	
 	public RR(){
-		super("Report.txt");
-		ListSize = 0;
+		super("C:\\Users\\Admin\\Desktop\\Report.txt");
 		RunTime = 0;
 		JobCount =0;
 	}
 	
-	public void run(List list){
-		this.setListSize(list.size());
+	public int run(List list){
 		for(int i=n;i<list.size();i++){
 			if(list.getJob(i).Finished == false){
 				if(list.getJob(i).getArrivalTime() > list.getCurrentTime()){
@@ -48,7 +45,7 @@ public class RR extends ReportWriter{
 				System.out.printf("%17s",list.getJob(i).getStartTime());
 				System.out.printf("%14s",list.getJob(i).getEndTime());
 				System.out.printf("%19s",list.getJob(i).getTurnaround(list.getCurrentTime()));
-				System.out.printf("%22s",list.getJob(i).getWaitTimeRoundRobin(list.getCurrentTime()));
+				System.out.printf("%22s",list.getJob(i).getWaitTime(list.getCurrentTime()));
 				if(list.getJob(i).getRemainTime() > 0 ){
 					System.out.printf("%19s",list.getJob(i).getRemainTime());
 				}else if(list.getJob(i).getRemainTime() == 0 ){
@@ -70,7 +67,7 @@ public class RR extends ReportWriter{
 					super.WriteReport(String.format("%17s",list.getJob(i).getStartTime()));
 					super.WriteReport(String.format("%14s",list.getJob(i).getEndTime()));
 					super.WriteReport(String.format("%19s",list.getJob(i).getTurnaround(list.getCurrentTime())));
-					super.WriteReport(String.format("%22s",list.getJob(i).getWaitTimeRoundRobin(list.getCurrentTime())));
+					super.WriteReport(String.format("%22s",list.getJob(i).getWaitTime(list.getCurrentTime())));
 					if(list.getJob(i).getRemainTime() > 0 ){
 						super.WriteReport(String.format("%19s",list.getJob(i).getRemainTime()));
 					}else if(list.getJob(i).getRemainTime() == 0){
@@ -84,6 +81,7 @@ public class RR extends ReportWriter{
 				n++;	
 			}
 		}
+		return list.getCurrentTime();
 	}
 	
 	public void Check(List list){
@@ -95,13 +93,5 @@ public class RR extends ReportWriter{
 	
 	public int getJobCount(){
 		return JobCount;
-	}
-	
-	public void setListSize(int size){
-		this.ListSize = size;
-	}
-	
-	public int getListSize(){
-		return this.ListSize;
 	}
 }

@@ -196,11 +196,11 @@ public class Job {
      * @param SimulationTime simulation time since the whole simulation has started
      * @return waiting time of the job
      */
-	 public int getWaitTime(int SimulationTime) {
+	 public int getWaitTimeFCFS(int SimulationTime) {
 	        return (getTurnaround(SimulationTime) - (this.BurstTime));
 	    }
 	 
-	 public int getWaitTimeRoundRobin(int SimulationTime) {
+	 public int getWaitTime(int SimulationTime) {
 	        return (getTurnaround(SimulationTime) - (this.BurstTime - this.Remaining));
 	    }
 	

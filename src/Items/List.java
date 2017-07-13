@@ -141,14 +141,20 @@ public class List {
 		if(mainList.isEmpty()){
 			System.out.println("Empty Queue"); 
 		}else{
+			System.out.println("\t\t   Orignal Process Control Block");
+			System.out.println("PID\tProcess Type\tPriority\tArrival Time\tBurst Time");
 			for(int i=0 ; i<mainList.lenght() ; i++){
 				try{
 					Job temp = mainList.get(i);
-					System.out.println("ProcessId:\t"+temp.getProcessId());
-					System.out.println("ProcessType:\t"+temp.getProcessType());
-	//				System.out.println("Priority:\t"+temp.getPriority());
-			     	System.out.println("ArrivalTime:\t"+temp.getArrivalTime());
-			     	System.out.println("BurstTime:\t"+temp.getBurstTime()+"\n");
+					System.out.print(temp.getProcessId());
+					if(temp.getProcessId() >= 10){
+						System.out.printf("%15s",temp.getProcessType());
+					}else{
+						System.out.printf("%16s",temp.getProcessType());
+					}
+					System.out.printf("%12s",temp.getPriority());
+					System.out.printf("%18s",temp.getArrivalTime());
+					System.out.printf("%16s",temp.getBurstTime()+"\n");
 				}catch(Exception e){
 					e.printStackTrace();
 				}

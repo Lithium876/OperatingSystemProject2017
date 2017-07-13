@@ -34,7 +34,12 @@ public class List {
     * @return selected job
     */
 	public Job getJob(int num){
-	    return mainList.get(num);
+	    try {
+			return mainList.get(num);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	/**
@@ -75,12 +80,16 @@ public class List {
 	public void OrderedByArrive(){
 		for(int i=0 ; i<mainList.lenght() ; i++){
 			for(int j=i+1 ; j<mainList.lenght() ;j++){
-				Job j1 = mainList.get(i);
-	            Job j2 = mainList.get(j);
-	            if(j2.isFirst(j1)){
-	            	mainList.set(i, j2);
-	                mainList.set(j, j1);
-	            }
+				try{
+					Job j1 = mainList.get(i);
+		            Job j2 = mainList.get(j);
+		            if(j2.isFirst(j1)){
+		            	mainList.set(i, j2);
+		                mainList.set(j, j1);
+		            }
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
 	       }
 	   }
 	}
@@ -91,12 +100,16 @@ public class List {
 	public void OrderedByShortest(){
 		for(int i=0 ; i<mainList.lenght() ; i++){
 			for(int j=i+1 ; j<mainList.lenght() ;j++){
-				Job j1 = mainList.get(i);
-				Job j2 = mainList.get(j);
-				if(j2.isShort(j1)){
-					mainList.set(i, j2);
-					mainList.set(j, j1);
-	            }
+				try{
+					Job j1 = mainList.get(i);
+					Job j2 = mainList.get(j);
+					if(j2.isShort(j1)){
+						mainList.set(i, j2);
+						mainList.set(j, j1);
+		            }
+				}catch(Exception e){
+					e.printStackTrace();
+				}
 	        }
 	    }
 	}
@@ -107,12 +120,16 @@ public class List {
 	public void OrderedByShortRemain(){
 		for(int i=0 ; i<mainList.lenght() ; i++){
 			for(int j=i+1 ; j<mainList.lenght() ;j++){
-				Job j1 = mainList.get(i);
-				Job j2 = mainList.get(j);
-				if(j2.isShortRemain(j1)){
-					mainList.set(i, j2);
-					mainList.set(j, j1);
-	           }
+				try{
+					Job j1 = mainList.get(i);
+					Job j2 = mainList.get(j);
+					if(j2.isShortRemain(j1)){
+						mainList.set(i, j2);
+						mainList.set(j, j1);
+		           }
+				}catch(Exception e){
+					e.printStackTrace();
+				}
 	       }
 	   }
 	}
@@ -125,12 +142,16 @@ public class List {
 			System.out.println("Empty Queue"); 
 		}else{
 			for(int i=0 ; i<mainList.lenght() ; i++){
-				Job temp = mainList.get(i);
-				System.out.println("ProcessId:\t"+temp.getProcessId());
-				System.out.println("ProcessType:\t"+temp.getProcessType());
-//				System.out.println("Priority:\t"+temp.getPriority());
-		     	System.out.println("ArrivalTime:\t"+temp.getArrivalTime());
-		     	System.out.println("BurstTime:\t"+temp.getBurstTime()+"\n");	
+				try{
+					Job temp = mainList.get(i);
+					System.out.println("ProcessId:\t"+temp.getProcessId());
+					System.out.println("ProcessType:\t"+temp.getProcessType());
+	//				System.out.println("Priority:\t"+temp.getPriority());
+			     	System.out.println("ArrivalTime:\t"+temp.getArrivalTime());
+			     	System.out.println("BurstTime:\t"+temp.getBurstTime()+"\n");
+				}catch(Exception e){
+					e.printStackTrace();
+				}
 		    }
 		}
 	}

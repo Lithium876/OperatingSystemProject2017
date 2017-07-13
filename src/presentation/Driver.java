@@ -1,5 +1,7 @@
 package presentation;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 import Items.Job;
 import Items.List;
@@ -12,6 +14,7 @@ public class Driver {
 	public static void main(String[] args){
 		int time =0;
 		int NoOfProcesses;
+		ReportWriter report = new ReportWriter("Report.txt");
 		FCFS fcfs  = new FCFS();
 		SRTF srtf;
 		RR rr = new RR();
@@ -24,8 +27,6 @@ public class Driver {
 		List workingBatchList = new List(NoOfProcesses);
 		List workingInteractiveList = new List(NoOfProcesses);
 		
-		
-
 		for(int i=0 ; i<NoOfProcesses ; i++){
 			listofJobs.addJob(new Job(i+1));
         }
@@ -33,6 +34,18 @@ public class Driver {
 		listofJobs.OrderedByArrive();
 //		listofJobs.showList();
 		System.out.println("PID\tArrival Time\tBurst Time\tStart Time\tEnd Time\tTurnaround Time \tWait time\tRemaining Time\tProcess Type");
+		
+		try {
+			File file = new File("Report.txt");
+			if(file.length() == 0){
+				report.WriteReport(String.format("PID\tArrival Time\tBurst Time\tStart Time\tEnd Time\tTurnaround Time \tWait time\tRemaining Time\tProcess Type\r\n"));
+			}else{
+				report.WriteReport(String.format("\r\nPID\tArrival Time\tBurst Time\tStart Time\tEnd Time\tTurnaround Time \tWait time\tRemaining Time\tProcess Type\r\n"));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		for(int j=0;j<NoOfProcesses;j++){
 //			workingList.addJob(listofJobs.getJob(j));
 //			srtf = new SRTF(workingList);
@@ -47,5 +60,11 @@ public class Driver {
 		}
 		rr.Check(workingInteractiveList);
 		in.close();
+		
+		try {
+			report.CloseReport();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

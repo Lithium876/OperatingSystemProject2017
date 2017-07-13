@@ -83,33 +83,13 @@ public class MyArrayList {
      * @param i is the position
      * @return process the element at the specified position in this list.
      */
-    public Job get(int i){
-    	//remember to throw exceptions here!
+    public Job get(int i) throws Exception{
         if(i>this.length-1){
-           System.out.println("ArrayIndexOutOfBound");
+        	throw new Exception("Array Index Out Of Bound at index: "+i);
         }
         if(i<0){
-        	 System.out.println("Negative Value");
+        	throw new Exception(i+" is a Negative Value");
         }
         return this.data[i];  
-    }
-    
-    /**
-     * method removes the element at the specified position in this list.
-     * Shifts any subsequent elements to the left  
-     * @param i is the position
-     */
-    public void remove(int i){
-    	//remember to throw exceptions here!
-        if(i>this.length-1){
-       	 System.out.println("ArrayIndexOutOfBound");
-        }
-        if(i<0){
-       	 System.out.println("Negative Value");
-        }
-        for(int x=i; x<this.data.length-1;x++){
-            data[x]=data[x+1];
-        }
-        this.length--;
     }
 }

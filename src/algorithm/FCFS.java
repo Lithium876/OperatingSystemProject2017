@@ -1,11 +1,14 @@
 package algorithm;
 
-import Items.List;
+import java.io.IOException;
 
-public class FCFS {
+import Items.List;
+import presentation.ReportWriter;
+
+public class FCFS extends ReportWriter{
 	
 	public FCFS(){
-		
+		super("Report.txt");
 	}
 	
 	public void run(List list){
@@ -32,6 +35,25 @@ public class FCFS {
 				System.out.printf("%22s",list.getJob(i).getWaitTime(list.getCurrentTime()));
 				System.out.printf("%19s",0);
 				System.out.printf("%19s",list.getJob(i).getProcessType() +"\n");
+				
+				//FOR REPORT WRITER
+				try {
+					super.WriteReport(String.format(Integer.toString(list.getJob(i).getProcessId())));
+					if(list.getJob(i).getProcessId() >= 10){
+						super.WriteReport(String.format("%13s",list.getJob(i).getArrivalTime()));
+					}else{
+						super.WriteReport(String.format("%14s",list.getJob(i).getArrivalTime()));
+					}
+					super.WriteReport(String.format("%15s", list.getJob(i).getBurstTime()));
+					super.WriteReport(String.format("%17s",list.getJob(i).getStartTime()));
+					super.WriteReport(String.format("%14s",list.getJob(i).getEndTime()));
+					super.WriteReport(String.format("%19s",list.getJob(i).getTurnaround(list.getCurrentTime())));
+					super.WriteReport(String.format("%22s",list.getJob(i).getWaitTime(list.getCurrentTime())));
+					super.WriteReport(String.format("%19s",0));
+					super.WriteReport(String.format("%19s",list.getJob(i).getProcessType() +"\r\n"));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}

@@ -1,17 +1,22 @@
 package algorithm;
 
-import Items.List;
+import java.io.IOException;
 
-public class RR {
+import Items.List;
+import presentation.ReportWriter;
+
+public class RR extends ReportWriter{
 	private int Quantum = 2;
 	private int RunTime;
 	private int ListSize;
-	private int JobCount=0;
+	private int JobCount;
 	private static int n=0;
 	
 	public RR(){
+		super("Report.txt");
 		ListSize = 0;
 		RunTime = 0;
+		JobCount =0;
 	}
 	
 	public void run(List list){
@@ -46,27 +51,46 @@ public class RR {
 				System.out.printf("%22s",list.getJob(i).getWaitTimeRoundRobin(list.getCurrentTime()));
 				if(list.getJob(i).getRemainTime() > 0 ){
 					System.out.printf("%19s",list.getJob(i).getRemainTime());
-				}else{
+				}else if(list.getJob(i).getRemainTime() == 0 ){
 					System.out.printf("%19s",0);
 					list.getJob(i).Finished=true;
-					this.setJobCount();
+					JobCount++;
 				}
 				System.out.printf("%19s",list.getJob(i).getProcessType() +"\n");
+				
+				//FOR REPORT WRITER
+				try {
+					super.WriteReport(String.format(Integer.toString(list.getJob(i).getProcessId())));
+					if(list.getJob(i).getProcessId() >= 10){
+						super.WriteReport(String.format("%13s",list.getJob(i).getArrivalTime()));
+					}else{
+						super.WriteReport(String.format("%14s",list.getJob(i).getArrivalTime()));
+					}
+					super.WriteReport(String.format("%15s",list.getJob(i).getBurstTime()));
+					super.WriteReport(String.format("%17s",list.getJob(i).getStartTime()));
+					super.WriteReport(String.format("%14s",list.getJob(i).getEndTime()));
+					super.WriteReport(String.format("%19s",list.getJob(i).getTurnaround(list.getCurrentTime())));
+					super.WriteReport(String.format("%22s",list.getJob(i).getWaitTimeRoundRobin(list.getCurrentTime())));
+					if(list.getJob(i).getRemainTime() > 0 ){
+						super.WriteReport(String.format("%19s",list.getJob(i).getRemainTime()));
+					}else if(list.getJob(i).getRemainTime() == 0){
+						super.WriteReport(String.format("%19s",0));
+					}
+					super.WriteReport(String.format("%19s",list.getJob(i).getProcessType() +"\r\n"));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 				list.getJob(i).setBurstTime(list.getJob(i).getRemainTime());
-				n++;
+				n++;	
 			}
 		}
 	}
 	
 	public void Check(List list){
 		while(this.getJobCount() != list.size()){
-			this.n=0;
-			this.run(list);
+		this.n=0;
+		this.run(list);
 		}
-	}
-	
-	public void setJobCount(){
-		JobCount++;
 	}
 	
 	public int getJobCount(){

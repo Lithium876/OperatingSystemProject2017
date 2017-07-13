@@ -14,7 +14,7 @@ public class Driver {
 	public static void main(String[] args){
 		int time =0;
 		int NoOfProcesses;
-		ReportWriter report = new ReportWriter("C:\\Users\\Admin\\Desktop\\Report.txt");
+		ReportWriter report = new ReportWriter("Report.txt");
 		FCFS fcfs  = new FCFS();
 		SRTF srtf;
 		RR rr = new RR();

@@ -31,6 +31,7 @@ public class RR {
 					list.getJob(i).setRemainingTime(list.getJob(i).getRemainTime()-Quantum);
 					RunTime = Quantum;
 				}
+		
 				list.setCurrentTime(list.getCurrentTime()+RunTime);
 				System.out.print(list.getJob(i).getProcessId());
 				if(list.getJob(i).getProcessId() >= 10){
@@ -54,6 +55,13 @@ public class RR {
 				list.getJob(i).setBurstTime(list.getJob(i).getRemainTime());
 				n++;
 			}
+		}
+	}
+	
+	public void Check(List list){
+		while(this.getJobCount() != list.size()){
+			this.n=0;
+			this.run(list);
 		}
 	}
 	

@@ -34,10 +34,6 @@ public class Driver {
 //		listofJobs.showList();
 		System.out.println("PID\tArrival Time\tBurst Time\tStart Time\tEnd Time\tTurnaround Time \tWait time\tRemaining Time\tProcess Type");
 		for(int j=0;j<NoOfProcesses;j++){
-			
-//			rr.run(workingList);
-//			fcfs.run(workingList);
-
 //			workingList.addJob(listofJobs.getJob(j));
 //			srtf = new SRTF(workingList);
 //			
@@ -45,10 +41,11 @@ public class Driver {
 				workingInteractiveList.addJob(listofJobs.getJob(j));
 				rr.run(workingInteractiveList);
 			}else{
-//				workingBatchList.addJob(listofJobs.getJob(j));
-//				fcfs.run(workingBatchList);
+				workingBatchList.addJob(listofJobs.getJob(j));
+				fcfs.run(workingBatchList);
 			}
 		}
+		rr.Check(workingInteractiveList);
 		in.close();
 	}
 }

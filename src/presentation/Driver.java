@@ -1,7 +1,5 @@
 package presentation;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.Scanner;
 import Items.Job;
 import Items.ProcessList;
@@ -30,42 +28,32 @@ public class Driver {
 		for(int i=0 ; i<NoOfProcesses ; i++){
 			listofJobs.addJob(new Job(i+1));
         }
-		
-	
+
 		listofJobs.OrderedByArrive();
 		listofJobs.showProcessList();
 		
-		System.out.println("\nPID\tArrival Time\tBurst Time\tStart Time\tEnd Time\tTurnaround Time \tWait time\tRemaining Time\tProcess Type");
-		
 		try {
-			File file = new File("Report.txt");
-			if(file.length() == 0){
-				report.WriteReport(String.format("PID\tArrival Time\tBurst Time\tStart Time\tEnd Time\tTurnaround Time \tWait time\tRemaining Time\tProcess Type\r\n"));
-			}else{
-				report.WriteReport(String.format("\r\nPID\tArrival Time\tBurst Time\tStart Time\tEnd Time\tTurnaround Time \tWait time\tRemaining Time\tProcess Type\r\n"));
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		for(int j=0;j<NoOfProcesses;j++){
-			workingBatchList.setCurrentTime(time);
-			workingInteractiveList.setCurrentTime(time);
+			System.out.println("\nPID\tArrival Time\tBurst Time\tStart Time\tEnd Time\tTurnaround Time \tWait time\tRemaining Time\tProcess Type");
+			report.WriteReport(String.format("\r\nPID\tArrival Time\tBurst Time\tStart Time\tEnd Time\tTurnaround Time \tWait time\tRemaining Time\tProcess Type\r\n"));
+
+			for(int j=0;j<NoOfProcesses;j++){
+				workingBatchList.setCurrentTime(time);
+				workingInteractiveList.setCurrentTime(time);
 			
-			if(listofJobs.getJob(j).getProcessType().equals("Interactive")){
-				workingInteractiveList.addJob(listofJobs.getJob(j));
-				time = rr.run(workingInteractiveList);
-			}else if(listofJobs.getJob(j).getProcessType().equals("Batch")){
-				workingBatchList.addJob(listofJobs.getJob(j));
-				time = fcfs.run(workingBatchList);
+				if(listofJobs.getJob(j).getProcessType().equals("Interactive")){
+					workingInteractiveList.addJob(listofJobs.getJob(j));
+					time = rr.run(workingInteractiveList);
+				}else if(listofJobs.getJob(j).getProcessType().equals("Batch")){
+					workingBatchList.addJob(listofJobs.getJob(j));
+					time = fcfs.run(workingBatchList);
+				}
 			}
-		}
-		rr.Check(workingInteractiveList);
-		in.close();
-		
-		try {
+			rr.Check(workingInteractiveList);
+			in.close();
+	
 			report.CloseReport();
-		} catch (IOException e) {
+		
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}

@@ -1,6 +1,10 @@
 package Items;
 
-public class ProcessList {
+import java.io.File;
+
+import presentation.ReportWriter;
+
+public class ProcessList extends ReportWriter{
 	
 	private List mainList;
 	private int currentTime = 0; // current simulation time
@@ -10,6 +14,7 @@ public class ProcessList {
      * @param number is the number of jobs
      */
 	public ProcessList(int number){
+		super("Report.txt");
 		mainList = new List(number);
 	}
 	
@@ -118,24 +123,41 @@ public class ProcessList {
 		if(mainList.isEmpty()){
 			System.out.println("Empty Queue"); 
 		}else{
-			System.out.println("\t\t   Orignal Process Control Block");
-			System.out.println("PID\tProcess Type\tPriority\tArrival Time\tBurst Time");
-			for(int i=0 ; i<mainList.lenght() ; i++){
-				try{
+			try{
+				System.out.println("\t\t   Orignal Process Control Block");
+				File file = new File(super.getFileName());
+				if(file.length() == 0){
+					super.WriteReport(String.format("\t\t   Orignal Process Control Block\r\n"));
+				}else{
+					for (int i=0; i<138; i++){
+						super.WriteReport(String.format("*"));
+					}
+					super.WriteReport(String.format("\r\n\r\n\t\t   Orignal Process Control Block\r\n"));
+				}
+				System.out.println("PID\tProcess Type\tPriority\tArrival Time\tBurst Time");
+				super.WriteReport(String.format("PID\tProcess Type\tPriority\tArrival Time\tBurst Time\r\n"));
+				
+				for(int i=0 ; i<mainList.lenght() ; i++){
 					Job temp = mainList.get(i);
 					System.out.print(temp.getProcessId());
+					super.WriteReport(String.format(Integer.toString(temp.getProcessId())));
 					if(temp.getProcessId() >= 10){
 						System.out.printf("%15s",temp.getProcessType());
+						super.WriteReport(String.format("%15s",temp.getProcessType()));
 					}else{
 						System.out.printf("%16s",temp.getProcessType());
+						super.WriteReport(String.format("%16s",temp.getProcessType()));
 					}
 					System.out.printf("%12s",temp.getPriority());
 					System.out.printf("%18s",temp.getArrivalTime());
 					System.out.printf("%16s",temp.getBurstTime()+"\n");
-				}catch(Exception e){
-					e.printStackTrace();
+					super.WriteReport(String.format("%15s",temp.getPriority()));
+					super.WriteReport(String.format("%15s",temp.getArrivalTime()));
+					super.WriteReport(String.format("%15s",temp.getBurstTime()+"\r\n"));
 				}
-		    }
+			}catch(Exception e){
+			e.printStackTrace();
+			}
 		}
 	}
 }

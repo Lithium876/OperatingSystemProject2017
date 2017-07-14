@@ -12,7 +12,7 @@ public class RR extends ReportWriter{
 	private static int n=0;
 	
 	public RR(){
-		super("Report.txt");
+		super("C:\\Users\\Admin\\Desktop\\Report.txt");
 		RunTime = 0;
 		JobCount =0;
 	}

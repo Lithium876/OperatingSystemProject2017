@@ -25,12 +25,9 @@ public class Job {
 		BurstTime = rand.nextInt(10) + 1;
 		this.setProcessType();
 		//If 
-		if(ProcessId == 1){
-			ArrivalTime= 0;
-		}else{
-			//generate a random value between 0 and 29
-			ArrivalTime = rand.nextInt(29) + 0;
-		}
+		//generate a random value between 0 and 29
+		ArrivalTime = rand.nextInt(29) + 0;
+	
 		EndTime = -1;
 		Finished = false;
 		

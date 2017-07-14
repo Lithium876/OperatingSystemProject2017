@@ -2,7 +2,7 @@ package algorithm;
 
 import java.io.IOException;
 
-import Items.List;
+import Items.ProcessList;
 import presentation.ReportWriter;
 
 public class RR extends ReportWriter{
@@ -17,7 +17,7 @@ public class RR extends ReportWriter{
 		JobCount =0;
 	}
 	
-	public int run(List list){
+	public int run(ProcessList list){
 		for(int i=n;i<list.size();i++){
 			if(list.getJob(i).Finished == false){
 				if(list.getJob(i).getArrivalTime() > list.getCurrentTime()){
@@ -84,7 +84,7 @@ public class RR extends ReportWriter{
 		return list.getCurrentTime();
 	}
 	
-	public void Check(List list){
+	public void Check(ProcessList list){
 		while(this.getJobCount() != list.size()){
 		this.n=0;
 		this.run(list);

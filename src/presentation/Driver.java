@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 import Items.Job;
-import Items.List;
+import Items.ProcessList;
 import algorithm.FCFS;
 import algorithm.RR;
 import algorithm.SRTF;
@@ -23,9 +23,9 @@ public class Driver {
 		System.out.println("Enter Number Processes to use: ");
 		NoOfProcesses = in.nextInt();
 		
-		List listofJobs = new List(NoOfProcesses);
-		List workingBatchList = new List(NoOfProcesses);
-		List workingInteractiveList = new List(NoOfProcesses);
+		ProcessList listofJobs = new ProcessList(NoOfProcesses);
+		ProcessList workingBatchList = new ProcessList(NoOfProcesses);
+		ProcessList workingInteractiveList = new ProcessList(NoOfProcesses);
 		
 		for(int i=0 ; i<NoOfProcesses ; i++){
 			listofJobs.addJob(new Job(i+1));

@@ -2,7 +2,7 @@ package algorithm;
 
 import java.io.IOException;
 
-import Items.List;
+import Items.ProcessList;
 import presentation.ReportWriter;
 
 public class FCFS extends ReportWriter{
@@ -11,7 +11,7 @@ public class FCFS extends ReportWriter{
 		super("C:\\Users\\Admin\\Desktop\\Report.txt");
 	}
 	
-	public int run(List list){
+	public int run(ProcessList list){
 		for(int i=0;i<list.size();i++){
 			if(list.getJob(i).Finished == false){
 				if(list.getJob(i).getArrivalTime() > list.getCurrentTime()){

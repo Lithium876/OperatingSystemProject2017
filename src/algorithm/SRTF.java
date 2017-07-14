@@ -1,10 +1,10 @@
 package algorithm;
 
-import Items.List;
+import Items.ProcessList;
 
 public class SRTF {
 	
-	public SRTF(List list){
+	public SRTF(ProcessList list){
 		for(int i=0;i<list.size();i++){
 			if(list.getJob(i).Finished == false){
 				if(list.getJob(i).getArrivalTime() == 0 && list.size()==1){

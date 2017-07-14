@@ -24,13 +24,10 @@ public class Job {
 		//generate a random value between 1 and 10
 		BurstTime = rand.nextInt(10) + 1;
 		this.setProcessType();
-		//If 
 		//generate a random value between 0 and 29
 		ArrivalTime = rand.nextInt(29) + 0;
-	
 		EndTime = -1;
 		Finished = false;
-		
 		//By default, each job's remaining time is equal to their burst time
 	    Remaining = BurstTime; 
 	}
@@ -212,18 +209,6 @@ public class Job {
             return (this.ProcessId < other.ProcessId);
         }
         return (this.ArrivalTime < other.ArrivalTime);
-    }
-    
-    /**
-     * compare the shortest burst time
-     * @param other is another job
-     * @return true if this job has shorter burst
-     */
-    public boolean isShort(Job other){
-        if(this.BurstTime == other.BurstTime){
-            return isFirst(other);
-        }
-        return (this.BurstTime < other.BurstTime);
     }
     
     /**

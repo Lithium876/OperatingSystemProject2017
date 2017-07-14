@@ -14,7 +14,7 @@ public class Driver {
 	public static void main(String[] args){
 		int time =0;
 		int NoOfProcesses;
-		ReportWriter report = new ReportWriter("C:\\Users\\Admin\\Desktop\\Report.txt");
+		ReportWriter report = new ReportWriter("Report.txt");
 		FCFS fcfs  = new FCFS();
 		SRTF srtf;
 		RR rr = new RR();
@@ -33,12 +33,12 @@ public class Driver {
 		
 	
 		listofJobs.OrderedByArrive();
-		listofJobs.showList();
+		listofJobs.showProcessList();
 		
 		System.out.println("\nPID\tArrival Time\tBurst Time\tStart Time\tEnd Time\tTurnaround Time \tWait time\tRemaining Time\tProcess Type");
 		
 		try {
-			File file = new File("C:\\Users\\Admin\\Desktop\\Report.txt");
+			File file = new File("Report.txt");
 			if(file.length() == 0){
 				report.WriteReport(String.format("PID\tArrival Time\tBurst Time\tStart Time\tEnd Time\tTurnaround Time \tWait time\tRemaining Time\tProcess Type\r\n"));
 			}else{

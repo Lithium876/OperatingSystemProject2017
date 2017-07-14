@@ -93,22 +93,22 @@ public class List {
         return this.data[i];  
     }
     
-    /**
-         * method removes the element at the specified position in this list.
-         * Shifts any subsequent elements to the left  
-         * @param i is the position
-         */
-        public void remove(int i){
-        	//remember to throw exceptions here!
-            if(i>this.length-1){
-           	 System.out.println("ArrayIndexOutOfBound");
-            }
-            if(i<0){
-           	 System.out.println("Negative Value");
-            }
-            for(int x=i; x<this.data.length-1;x++){
-                data[x]=data[x+1];
-           }
-            this.length--;
-        }
+   /**
+   * method removes the element at the specified position in this list.
+   * Shifts any subsequent elements to the left  
+   * @param i is the position
+   */
+   public void remove(int i)throws Exception{
+	   //remember to throw exceptions here!
+	   if(i>this.length-1){
+		   throw new Exception("ArrayIndexOutOfBound");
+	   }
+	   if(i<0){
+		   throw new Exception("Negative Value");
+	   }
+	   for(int x=i; x<this.data.length-1;x++){
+		   data[x]=data[x+1];
+       }
+	   this.length--;
+   }
 }

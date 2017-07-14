@@ -3,7 +3,6 @@ package Items;
 public class ProcessList {
 	
 	private List mainList;
-	private int number;
 	private int currentTime = 0; // current simulation time
 	
 	/**
@@ -12,7 +11,6 @@ public class ProcessList {
      */
 	public ProcessList(int number){
 		mainList = new List(number);
-	    this.number = number; 
 	}
 	
 	/**
@@ -43,7 +41,7 @@ public class ProcessList {
 	}
 	
 	/**
-     * add job to the end of the queue
+     * Add job to the end of the list
      * @param job is the job to be added
     */
 	public void addJob(Job job){
@@ -51,27 +49,26 @@ public class ProcessList {
 	}
 	
 	/**
-     * replace the job at a specific place of the list
-     * @param i is the place of job to be replaced
-     * @param job is the new job to replace with
-     */
-	public void set(int i , Job job){
-		mainList.set(i, job);
-	}
-	
-	/**
-    * @return the size-1 of the array list 
+    * @return the size-1 of the list 
     */
 	public int size(){
 		return mainList.lenght();
 	}
 	
 	/**
-     * check if the queue is empty
+     * check if the list is empty
      * @return true if empty
     */
 	public boolean isEmpty(){
 		return (mainList.isEmpty());
+	}
+	
+	public void removeJob(int i){
+		try {
+			mainList.remove(i);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -92,26 +89,6 @@ public class ProcessList {
 				}
 	       }
 	   }
-	}
-	
-	/**
-    * order the jobs inside the list by shortest burst time
-    */
-	public void OrderedByShortest(){
-		for(int i=0 ; i<mainList.lenght() ; i++){
-			for(int j=i+1 ; j<mainList.lenght() ;j++){
-				try{
-					Job j1 = mainList.get(i);
-					Job j2 = mainList.get(j);
-					if(j2.isShort(j1)){
-						mainList.set(i, j2);
-						mainList.set(j, j1);
-		            }
-				}catch(Exception e){
-					e.printStackTrace();
-				}
-	        }
-	    }
 	}
 	
 	/**
@@ -137,7 +114,7 @@ public class ProcessList {
 	/**
     * Show queue content (every job details)
     */
-	public void showList(){
+	public void showProcessList(){
 		if(mainList.isEmpty()){
 			System.out.println("Empty Queue"); 
 		}else{

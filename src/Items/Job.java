@@ -4,7 +4,7 @@ import java.util.Random;
 public class Job {
 	private int ProcessId;
 	private String ProcessType;
-	private String Priority;
+	private int Priority;
 	private int BurstTime;
 	private int ArrivalTime;
 	private int StartTime;
@@ -24,7 +24,6 @@ public class Job {
 		//generate a random value between 1 and 10
 		BurstTime = rand.nextInt(10) + 1;
 		this.setProcessType();
-		this.setPriority();
 		//generate a random value between 0 and 29
 		ArrivalTime = rand.nextInt(29) + 0;
 		EndTime = -1;
@@ -48,15 +47,22 @@ public class Job {
 		String[] processTypes = new String[]{"System", "Interactive", "Batch"};
 	    int rnd = new Random().nextInt(processTypes.length);
 	    ProcessType = processTypes[rnd];
+	    
+
+	    if(ProcessType.equals("System")){
+	    	this.setPriority(1);
+	    	}else if(ProcessType.equals("Interactive")){
+	    		this.setPriority(2);
+	    }else{
+	    	this.setPriority(3);
+	    	}
 	}
 	
 	/**
      * generates a random process priority
      */
-	public void setPriority() {
-		String[] priority = new String[]{"High", "Medium", "Low"};
-	    int rnd = new Random().nextInt(priority.length);
-	    this.Priority = priority[rnd];
+	public void setPriority(int Priority) {
+		this.Priority = Priority;
 	}
 	
 	/**
@@ -117,7 +123,7 @@ public class Job {
 	/**
      * @return process priority of the job
      */
-	public String getPriority() {
+	public int getPriority() {
 		return this.Priority;
 	}
 	

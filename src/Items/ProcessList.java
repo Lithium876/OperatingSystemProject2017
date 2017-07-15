@@ -153,10 +153,10 @@ public class ProcessList extends ReportWriter{
 						System.out.printf("%16s",temp.getProcessType());
 						super.WriteReport(String.format("%16s",temp.getProcessType()));
 					}
-					System.out.printf("%13s",temp.getPriority());
+					System.out.printf("%12s",temp.getPriority());
 					System.out.printf("%18s",temp.getArrivalTime());
 					System.out.printf("%16s",temp.getBurstTime()+"\n");
-					super.WriteReport(String.format("%13s",temp.getPriority()));
+					super.WriteReport(String.format("%12s",temp.getPriority()));
 					super.WriteReport(String.format("%18s",temp.getArrivalTime()));
 					super.WriteReport(String.format("%16s",temp.getBurstTime()+"\r\n"));
 				}

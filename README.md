@@ -75,7 +75,8 @@ The <i>Process Control Block (PCB)</i> should include (at minimum) the following
 
 ### Combination 
 
-The lab tutor gave out 5 combinations of which each group shoud pick only ONE. For this project Combination 3 was choosen.
+The lab tutor gave out 5 combinations of which each group should pick only ONE. 
+For this project Combination 3 was choosen.
 
 <table>
   <thead>

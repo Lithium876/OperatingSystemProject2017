@@ -73,4 +73,35 @@ The <i>Process Control Block (PCB)</i> should include (at minimum) the following
   </tbody>
 </table>
 
+### Combination 
 
+The lab tutor gave out 5 combinations of which each group shoud pick only ONE. For this project Combination 3 was choosen.
+
+<table>
+  <thead>
+    <tr>
+    	<th></th>
+        <th>PROCESS TYPE</th>
+    	<th>PRIORITY</th>
+        <th>ALGORITHM</th>
+    </tr>
+  </thead>
+  <tbody>
+   <tr>
+    <td rowspan="3"><b>Combination 3</b></td>
+    <td>System</td>
+    <td><center>1</center></td>
+    <td>SRTF</td>
+  </tr>
+  <tr>
+    <td>Interactive</td>
+    <td><center>2</center></td>
+    <td>RR - Q:2</td>
+  </tr>
+   <tr>
+    <td>Batch</td>
+    <td><center>3</center></td>
+    <td>FCFS</td>
+  </tr>
+  </tbody>
+</table>

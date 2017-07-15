@@ -125,6 +125,7 @@ public class ProcessList extends ReportWriter{
 		}else{
 			try{
 				System.out.println("\t\t   Orignal Process Control Block");
+				System.out.println("\t   Process Type 'Interative' has a Quantum of 2\n");
 				File file = new File(super.getFileName());
 				if(file.length() == 0){
 					super.WriteReport(String.format("\t\t   Orignal Process Control Block\r\n"));
@@ -134,8 +135,9 @@ public class ProcessList extends ReportWriter{
 					}
 					super.WriteReport(String.format("\r\n\r\n\t\t   Orignal Process Control Block\r\n"));
 				}
+				super.WriteReport(String.format("\t   Process Type 'Interative' has a Quantum of 2\r\n"));
 				System.out.println("PID\tProcess Type\tPriority\tArrival Time\tBurst Time");
-				super.WriteReport(String.format("PID\tProcess Type\tPriority\tArrival Time\tBurst Time\r\n"));
+				super.WriteReport(String.format("\r\nPID\tProcess Type\tPriority\tArrival Time\tBurst Time\r\n"));
 				
 				for(int i=0 ; i<mainList.lenght() ; i++){
 					Job temp = mainList.get(i);

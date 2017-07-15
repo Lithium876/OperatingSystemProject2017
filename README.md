@@ -7,9 +7,9 @@ the process in those higher priority queues should have completed its execution.
 
 ### Assignment Requirements
 
-You have been asked to simulate a Multi-Level Queue algorithm. The simulation should allow the user the option to specify how many processes should be used at execution time. The simulation should automatically generate the processes and randomly assigned them a Process Type, Priority, Arrival and Burst Time. When the simulation completes a report should be generated to display the intervals that each process ran. This should be presented in a tabular format and also saved to a text file for subsequent retrieval and marking.
+You have been asked to simulate a **Multi-Level Queue**  algorithm. The simulation should allow the user the option to specify how many processes should be used at execution time. The simulation should automatically generate the processes and randomly assigned them a Process Type, Priority, Arrival and Burst Time. When the simulation completes a report should be generated to display the intervals that each process ran. This should be presented in a tabular format and also saved to a text file for subsequent retrieval and marking.
 
-The <i>Process Control Block (PCB)</i> should include (at minimum) the following elements:
+The *Process Control Block (PCB)* should include (at minimum) the following elements:
 
 <table>
   <thead>

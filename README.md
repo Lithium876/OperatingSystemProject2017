@@ -11,7 +11,6 @@ You have been asked to simulate a Multi-Level Queue algorithm. The simulation sh
 
 The <i>Process Control Block (PCB)</i> should include (at minimum) the following elements:
 
-#### PROCESS CONTROL BLOCK
 <table border=1px>
   <thead>
     <tr>
@@ -31,8 +30,3 @@ The <i>Process Control Block (PCB)</i> should include (at minimum) the following
   </tr>
 </table>
 
-
-| ITEM     | DESCRIPTION                      | GENERATED                                          |
-|----------|:--------------------------------:|:--------------------------------------------------:|
-|Process Id| Unique identifier for process    | a <i>unique</i> randomized integer between 0 and 20|
-|Process Type| Type of Porcess:* 1 System     |  a randomized selection from options     |

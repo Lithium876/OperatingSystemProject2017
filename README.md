@@ -22,11 +22,55 @@ The <i>Process Control Block (PCB)</i> should include (at minimum) the following
     	<th>GENERATED</th>
     </tr>
   </thead>
-  
-  <tr>
+  <tbody>
+   <tr>
     <td>Process Id</td>
     <td>Unique identifier for process</td>
     <td>a <i>unique</i> randomized integer between 0 and 20</td>
   </tr>
+   <tr>
+    <td>Process Type</td>
+    <td>Type of process:
+    	<ul>
+        	<li>1 System</li>
+            <li>2 Interactive</li>
+            <li>3 Batch</li>
+        </ul>
+    </td>
+    <td>a randomized selection from options</td>
+  </tr>
+   <tr>
+    <td>Priority</td>
+    <td>Importance of process:
+    	<ul>
+        	<li>1 High</li>
+            <li>2 Medium</li>
+            <li>3 Low</li>
+        </ul>
+    </td>
+    <td>a randomized selection from options</td>
+  </tr>
+  <tr>
+    <td>Burst Time</td>
+    <td>CPU time needed to complete task</td>
+    <td>a randomized integer between 1 and 10</td>
+  </tr>
+  <tr>
+    <td>Arrival Time</td>
+    <td>Time the process was created</td>
+    <td>a randomized integer between 0 and 29</td>
+  </tr>
+  <tr>
+    <td>Start Time</td>
+    <td>Time the process first gets the CPU</td>
+    <td></td>
+  </tr>
+   <tr>
+    <td>End Time</td>
+    <td>Time the process ends</td>
+    <td></td>
+  </tr>
+  </tbody>
 </table>
+
 

@@ -32,7 +32,7 @@ public class ProcessList extends ReportWriter{
 		currentTime = time;
 	}
 	
-	/**
+	/**Get a job at a specific position
     * @param num is the number of the job in the queue
     * @return selected job
     */
@@ -68,6 +68,9 @@ public class ProcessList extends ReportWriter{
 		return (mainList.isEmpty());
 	}
 	
+	/**Remove a job at a specific position
+     * @param job is the job to be added
+    */
 	public void removeJob(int i){
 		try {
 			mainList.remove(i);
@@ -150,12 +153,12 @@ public class ProcessList extends ReportWriter{
 						System.out.printf("%16s",temp.getProcessType());
 						super.WriteReport(String.format("%16s",temp.getProcessType()));
 					}
-					System.out.printf("%12s",temp.getPriority());
+					System.out.printf("%13s",temp.getPriority());
 					System.out.printf("%18s",temp.getArrivalTime());
 					System.out.printf("%16s",temp.getBurstTime()+"\n");
-					super.WriteReport(String.format("%15s",temp.getPriority()));
-					super.WriteReport(String.format("%15s",temp.getArrivalTime()));
-					super.WriteReport(String.format("%15s",temp.getBurstTime()+"\r\n"));
+					super.WriteReport(String.format("%13s",temp.getPriority()));
+					super.WriteReport(String.format("%18s",temp.getArrivalTime()));
+					super.WriteReport(String.format("%16s",temp.getBurstTime()+"\r\n"));
 				}
 			}catch(Exception e){
 			e.printStackTrace();

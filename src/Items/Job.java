@@ -4,7 +4,7 @@ import java.util.Random;
 public class Job {
 	private int ProcessId;
 	private String ProcessType;
-	private int Priority;
+	private String Priority;
 	private int BurstTime;
 	private int ArrivalTime;
 	private int StartTime;
@@ -24,6 +24,7 @@ public class Job {
 		//generate a random value between 1 and 10
 		BurstTime = rand.nextInt(10) + 1;
 		this.setProcessType();
+		this.setPriority();
 		//generate a random value between 0 and 29
 		ArrivalTime = rand.nextInt(29) + 0;
 		EndTime = -1;
@@ -33,41 +34,33 @@ public class Job {
 	}
 	
 	/**
-     * set the process id for a job
-     * @param processId is the Process ID for a job
-     */
+    * set the process id for a job
+    * @param processId is the Process ID for a job
+    */
 	public void setProcessId(int processId) {
 		ProcessId = processId;
 	}
 	
 	/**
-     * generates a random process type, and assigns it to it's respective priority
+     * generates a random process type
      */
 	public void setProcessType() {
 		String[] processTypes = new String[]{"System", "Interactive", "Batch"};
 	    int rnd = new Random().nextInt(processTypes.length);
 	    ProcessType = processTypes[rnd];
-	    
-	    if(ProcessType.equals("System")){
-	    	this.setPriority(1);
-	    }else if(ProcessType.equals("Interactive")){
-	    	this.setPriority(2);
-	    }else{
-	    	this.setPriority(3);
-	    }
 	}
 	
 	/**
-     * set the process id for a job
-     * @param Priority is the Process Priority for a job
+     * generates a random process priority
      */
-	public void setPriority(int Priority) {
-
-		this.Priority = Priority;
+	public void setPriority() {
+		String[] priority = new String[]{"High", "Medium", "Low"};
+	    int rnd = new Random().nextInt(priority.length);
+	    this.Priority = priority[rnd];
 	}
 	
 	/**
-     * set the process id for a job
+     * set the process burst time for a job
      * @param time is the Process burst time for a job
      */
 	public void setBurstTime(int time) {
@@ -76,7 +69,7 @@ public class Job {
 	}
 	
 	/**
-     * set the process id for a job
+     * set the process arrival time for a job
      * @param time is the Process arrival time for a job
      */
 	public void setArrivalTime(int time) {
@@ -84,7 +77,7 @@ public class Job {
 	}
 	
 	/**
-     * set the process id for a job
+     * set the process start time for a job
      * @param startTime is the Process start time for a job
      */
 	public void setStartTime(int startTime) {
@@ -92,7 +85,7 @@ public class Job {
 	}
 	
 	/**
-     * set the process id for a job
+     * set the process end time for a job
      * @param endTime is the Process end time for a job
      */
 	public void setEndTime(int endTime) {
@@ -100,7 +93,7 @@ public class Job {
 	}
 	
 	/**
-     * set the process id for a job
+     * set the process remaining time for a job
      * @param remainingTime is the Process remaining time for a job
      */
 	public void setRemainingTime(int remainingTime){
@@ -124,8 +117,8 @@ public class Job {
 	/**
      * @return process priority of the job
      */
-	public int getPriority() {
-		return Priority;
+	public String getPriority() {
+		return this.Priority;
 	}
 	
 	/**
@@ -174,8 +167,8 @@ public class Job {
         if(Finished){ 
             return (EndTime - ArrivalTime );
         }
-        /*if the simulation time is greater than the arrival time, return
-         *the difference of the simulation time and the arrival time
+        /*if the simulation time is greater than the arrival time, 
+         *return the difference of the simulation time and the arrival time
          *This usually happens if a job arrived but hasn't finished yet
          */
         if(SimulationTime > ArrivalTime){ 

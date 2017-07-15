@@ -11,8 +11,8 @@ You have been asked to simulate a Multi-Level Queue algorithm. The simulation sh
 
 The <i>Process Control Block (PCB)</i> should include (at minimum) the following elements:
 
-|PROCESS CONTROL BLOCK|
-|:-------------------:|
+|PROCESS CONTROL BLOCK                                                                             |
+|:------------------------------------------------------------------------------------------------:|
 | ITEM     | DESCRIPTION                      | GENERATED                                          |
 |----------|:--------------------------------:|:--------------------------------------------------:|
 |Process Id| Unique identifier for process    | a <i>unique</i> randomized integer between 0 and 20|

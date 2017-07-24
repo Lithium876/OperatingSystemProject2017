@@ -84,6 +84,7 @@ public class List {
      * @return process the element at the specified position in this list.
      */
     public Job get(int i) throws Exception{
+//    	System.out.println("\nlength: "+this.length);
         if(i>this.length-1){
         	throw new Exception("Array Index Out Of Bound at index: "+i);
         }

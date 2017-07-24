@@ -163,41 +163,6 @@ public class Job {
 	}
 	
 	 /**
-     * calculate the turnaround time of the job
-     * requires the simulation time
-     * @param SimulationTime simulation time since the whole simulation has started 
-     * @return turnaround time of the job
-     */
-	public int getTurnaround(int SimulationTime){
-		//if the job is finished return the difference of End time and arrival time 
-        if(Finished){ 
-            return (EndTime - ArrivalTime );
-        }
-        /*if the simulation time is greater than the arrival time, 
-         *return the difference of the simulation time and the arrival time
-         *This usually happens if a job arrived but hasn't finished yet
-         */
-        if(SimulationTime > ArrivalTime){ 
-           return (SimulationTime - ArrivalTime);
-        }
-        return 0; 
-    }
-	
-	/**
-     * calculate the wait time of the job
-     * wait = turnaround - burst time.
-     * @param SimulationTime simulation time since the whole simulation has started
-     * @return waiting time of the job
-     */
-	 public int getWaitTimeFCFS(int SimulationTime) {
-	        return (getTurnaround(SimulationTime) - (this.BurstTime));
-	    }
-	 
-	 public int getWaitTime(int SimulationTime) {
-	        return (getTurnaround(SimulationTime) - (this.BurstTime - this.Remaining));
-	    }
-	
-	 /**
 	 * compare the arrive time to see which job arrived first 
 	 * based off process ID
 	 * @param other is another job

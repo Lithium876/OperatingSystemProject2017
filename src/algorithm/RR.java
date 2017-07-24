@@ -48,13 +48,9 @@ public class RR extends ReportWriter{
 					System.out.printf("%15s",list.getJob(i).getBurstTime());
 					System.out.printf("%17s",list.getJob(i).getStartTime());
 					System.out.printf("%14s",list.getJob(i).getEndTime());
-					System.out.printf("%19s",list.getJob(i).getTurnaround(list.getCurrentTime()));
-					System.out.printf("%22s",list.getJob(i).getWaitTime(list.getCurrentTime()));
 					super.WriteReport(String.format("%15s",list.getJob(i).getBurstTime()));
 					super.WriteReport(String.format("%17s",list.getJob(i).getStartTime()));
 					super.WriteReport(String.format("%14s",list.getJob(i).getEndTime()));
-					super.WriteReport(String.format("%19s",list.getJob(i).getTurnaround(list.getCurrentTime())));
-					super.WriteReport(String.format("%22s",list.getJob(i).getWaitTime(list.getCurrentTime())));
 					if(list.getJob(i).getRemainTime() > 0 ){
 						System.out.printf("%19s",list.getJob(i).getRemainTime());
 						super.WriteReport(String.format("%19s",list.getJob(i).getRemainTime()));

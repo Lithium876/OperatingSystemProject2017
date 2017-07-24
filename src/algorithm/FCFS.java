@@ -32,15 +32,11 @@ public class FCFS extends ReportWriter{
 				System.out.printf("%15s",list.getJob(i).getBurstTime());
 				System.out.printf("%17s",list.getJob(i).getStartTime());
 				System.out.printf("%14s",list.getJob(i).getEndTime());
-				System.out.printf("%19s",list.getJob(i).getTurnaround(list.getCurrentTime()));
-				System.out.printf("%22s",list.getJob(i).getWaitTimeFCFS(list.getCurrentTime()));
 				System.out.printf("%19s",0);
 				System.out.printf("%19s",list.getJob(i).getProcessType() +"\n");
 				super.WriteReport(String.format("%15s", list.getJob(i).getBurstTime()));
 				super.WriteReport(String.format("%17s",list.getJob(i).getStartTime()));
 				super.WriteReport(String.format("%14s",list.getJob(i).getEndTime()));
-				super.WriteReport(String.format("%19s",list.getJob(i).getTurnaround(list.getCurrentTime())));
-				super.WriteReport(String.format("%22s",list.getJob(i).getWaitTimeFCFS(list.getCurrentTime())));
 				super.WriteReport(String.format("%19s",0));
 				super.WriteReport(String.format("%19s",list.getJob(i).getProcessType() +"\r\n"));
 				

@@ -8,6 +8,7 @@ public class ProcessList extends ReportWriter{
 	
 	private List mainList;
 	private int currentTime = 0; // current simulation time
+	private int number;
 	
 	/**
      * create an empty list with size for a specific number of jobs
@@ -16,6 +17,7 @@ public class ProcessList extends ReportWriter{
 	public ProcessList(int number){
 		super("Report.txt");
 		mainList = new List(number);
+		this.number = number;
 	}
 	
 	/**
@@ -24,6 +26,17 @@ public class ProcessList extends ReportWriter{
 	public int getCurrentTime(){
 		return currentTime;
 	}
+	
+	/**
+     * fill the queue with jobs with random data
+     * @param number number of jobs in the queue
+     */
+    public void fill(){ 
+        for(int i=0 ; i<number ; i++){
+            Job temp = new Job(i+1); // job number starts from 1 not 0
+            mainList.add(temp);
+        }
+    }
 	
 	/**
      * @param time is the current time in simulation
